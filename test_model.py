@@ -47,7 +47,7 @@ with tf.Session(config=config) as sess:
             # load training image and crop it if necessary
 
             print("Testing original " + phone.replace("_orig", "") + " model, processing image " + photo)
-            image = np.float16((misc.imresize(test_dir + photo), (res_sizes[phone]))) / 255
+            image = np.float16((misc.imresize(test_dir + photo), res_sizes[phone])) / 255
 
             image_crop = utils.extract_crop(image, resolution, phone, res_sizes)
             image_crop_2d = np.reshape(image_crop, [1, IMAGE_SIZE])
@@ -85,7 +85,7 @@ with tf.Session(config=config) as sess:
                 # load training image and crop it if necessary
 
                 print("iteration " + str(i) + ", processing image " + photo)
-                image = np.float16((misc.imresize(test_dir + photo), (res_sizes[phone]))) / 255
+                image = np.float16((misc.imresize(test_dir + photo), res_sizes[phone])) / 255
 
                 image_crop = utils.extract_crop(image, resolution, phone, res_sizes)
                 image_crop_2d = np.reshape(image_crop, [1, IMAGE_SIZE])
